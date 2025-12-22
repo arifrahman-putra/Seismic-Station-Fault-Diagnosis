@@ -277,7 +277,7 @@ pip install -r requirements.txt
 CREATE DATABASE seismometer_monitoring;
 ```
 
-2. Update database credentials in `script.py` (lines 318-323):
+2. Update database credentials in `Seismic Station Realtime Fault Diagnosis.py`:
 ```python
 db_params = {
     "dbname": "seismometer_monitoring",
@@ -316,7 +316,7 @@ mkdir -p "saved_models" "Seismic Folder" "Inventory Folder"
 
 ### Step 5: Configuration
 
-Update the network code in `script.py` (line 557):
+Update the network code in `Seismic Station Realtime Fault Diagnosis.py`:
 ```python
 Network_Code = "YOUR_NETWORK_CODE"  # Replace with your seismic network code
 ```
@@ -430,7 +430,7 @@ return time_diff <= 7200  # Change threshold in seconds
 
 ### Update Fault Classifications
 
-Modify fault lists (lines 12-14):
+Modify fault lists:
 ```python
 seismo_fault_cases = ["LM", "FO", "EI", "DS", "TO", "LF"]
 digitizer_fault_cases = ["UD", "D_DG"]
