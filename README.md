@@ -33,44 +33,44 @@ This system automatically detects, isolates, and identifies equipment faults and
               │   Earthquake?       │
               └──────────┬──────────┘
                          │
-         ┌───────────────┼───────────────┐
-         │ YES           │ NO            │
-         ▼               ▼               │
-    Mark as NORMAL   Feature Extraction │
-    (Earthquake      (PPSD Analysis -   │
-     occurrence)      NHNM Deviation)   │
-                         │               │
-                         ▼               │
-                  ┌──────────────────┐  │
-                  │  FAULT DETECTION │  │
-                  │ One-Class AE     │  │
-                  │ (Binary: 1/0)    │  │
-                  └────────┬─────────┘  │
-                           │             │
-                  ┌────────┴────────┐   │
-                  │   Anomaly?      │   │
-                  └────────┬────────┘   │
-                           │             │
-              ┌────────────┼─────────┐  │
-              │ NO         │ YES     │  │
-              ▼            ▼         │  │
-         Mark as NORMAL  FAULT       │  │
-                        ISOLATION    │  │
-                        (DNN Classifier) │
-                        Multi-class   │  │
-                        (LM/FO/EI/DS/ │  │
-                         TO/LF/UD/    │  │
-                         D_DG/AI)     │  │
-                            │          │  │
-                            ▼          │  │
-                  ┌──────────────────┐│  │
-                  │ FAULT CLASSIFICATION│ │
-                  │ - Seismometer    ││  │
-                  │ - Digitizer      ││  │
-                  │ - Transmission   ││  │
-                  └────────┬─────────┘│  │
-                           │          │  │
-                           ▼          ▼  ▼
+         ┌───────────────┼
+         │ YES           │ NO            
+         ▼               ▼               
+    Mark as NORMAL   Feature Extraction 
+    (Earthquake      (PPSD Analysis -   
+     occurrence)      NHNM Deviation)   
+                         │               
+                         ▼               
+                  ┌──────────────────┐  
+                  │  FAULT DETECTION │  
+                  │ One-Class AE     │  
+                  │ (Binary: 1/0)    │  
+                  └────────┬─────────┘  
+                           │            
+                  ┌────────┴────────┐   
+                  │   Anomaly?      │   
+                  └────────┬────────┘   
+                           │             
+              ┌────────────|  
+              │ NO         │ YES     
+              ▼            ▼        
+         Mark as NORMAL  FAULT       
+                        ISOLATION    
+                        (DNN Classifier) 
+                        Multi-class   
+                        (LM/FO/EI/DS/ 
+                         TO/LF/UD/    
+                         D_DG/AI)     
+                            │          
+                            ▼          
+                  ┌──────────────────┐  
+                  │ EQUIPMENTS       │ 
+                  │ - Seismometer    │  
+                  │ - Digitizer      │  
+                  │ - Transmission   │  
+                  └────────┬─────────┘  
+                           │            
+                           ▼           
          ┌───────────────────────────────────────────┐
          │      HOURLY DIAGNOSIS STORAGE              │
          │  (seismometer/digitizer/transmission       │
