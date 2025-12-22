@@ -2,3 +2,4 @@ venv/
 saved_models/
 .idea/
 *.xlsx
+*.txt

@@ -340,12 +340,13 @@ class DatabaseManager:
 
 # Initialize persistent database connection
 db_params = {
-    "dbname": "postgres",
-    "user": "postgres",
-    "password": "f1s1k4u1",
+    "dbname": "YOUR_DB_NAME",
+    "user": "YOUR_USERNAME",
+    "password": "YOUR_PASSWORD",
     "host": "localhost",
-    "port": "5432"  # your postgres port
+    "port": "5432"
 }
+
 
 db_manager = DatabaseManager(db_params)
 
@@ -384,7 +385,7 @@ def predict_with_One_AE(data):
     threshold = 0.001714 # obtained experimentally during model train evaluation (95th percentile of reconstruction train prediction error)
 
     if recon_error > threshold:
-        Y_pred=-1
+        Y_pred=0
     else:
         Y_pred=1
 
@@ -450,7 +451,6 @@ def process_hour_data(start_time, end_time, mode="historical"):
     # Process each active seismometer
     for seismometer_record in active_seismometers:
         EquipmentID, StationID, Equipment, Status, ChannelType = seismometer_record
-        ChannelType = "S"  # hardcoded channel type
 
         # Determine channels based on channel type from Equipments table
         if ChannelType == "S":
@@ -628,7 +628,7 @@ def process_hour_data(start_time, end_time, mode="historical"):
 
 def determine_start_time():
     """
-    Determine where to start processing based on the last processed time or default to 2025-01-1.
+    Determine where to start processing based on the last processed time or default to 2025-01-01.
     """
     last_processed = db_manager.get_last_processed_time()
 
@@ -639,8 +639,8 @@ def determine_start_time():
                                 last_processed.hour) + 3600
         return next_hour
     else:
-        print("No previous processing history found. Starting from 2025-01-1 12:00:00 UTC")
-        return UTCDateTime(2025, 1, 1, 12, 0, 0)
+        print("No previous processing history found. Starting from 2025-01-01 0:00:00 UTC")
+        return UTCDateTime(2025, 1, 1, 0, 0, 0)
 
 
 def is_realtime_ready(current_process_time):
