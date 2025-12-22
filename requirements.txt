@@ -1,0 +1,9 @@
+pandas
+obspy
+seisbench
+joblib
+psycopg2-binary
+numpy
+tensorflow 
+keras
+torch
