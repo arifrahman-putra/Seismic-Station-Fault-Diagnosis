@@ -260,8 +260,8 @@ FaultDiagnosis_log (
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/seismic-station-fault-diagnosis.git
-cd seismic-station-fault-diagnosis
+git clone https://github.com/arifrahman-putra/Seismic-Station-Fault-Diagnosis.git
+cd Seismic-Station-Fault-Diagnosis
 ```
 
 ### Step 2: Install Dependencies
@@ -536,8 +536,10 @@ Research: machine Learning-based Seismometer Fault Diagnosis
 ## 📧 Contact
 
 For questions, issues, or collaboration:
-Email: arifrahmanputra01@gmail.com
-github: 
+- **Email**: arifrahmanputra01@gmail.com
+- **LinkedIn**: [Arifrahman Putra](https://www.linkedin.com/in/arifrahman-putra-2543781b1)
+- **GitHub**: [@arifrahman-putra](https://github.com/arifrahman-putra)
+- **Issues**: [Project Issues](https://github.com/arifrahman-putra/Seismic-Station-Fault-Diagnosis/issues)
 
 ---
 
