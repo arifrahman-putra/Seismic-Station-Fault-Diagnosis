@@ -385,15 +385,11 @@ def predict_with_One_AE(data):
     # Predict using the One Class Autoencoder model
     scaled_data = One_AE_scaler.transform(data)
     predict_data = One_AE_model.predict(scaled_data)
-    recon_error = np.mean(np.square(scaled_data - predict_data))
+    recon_error = np.mean(np.square(scaled_data - predict_data), axis = 1)
     threshold = 0.001714 # obtained experimentally during model train evaluation (95th percentile of reconstruction train prediction error)
 
-    if recon_error > threshold:
-        Y_pred=0
-    else:
-        Y_pred=1
-
-    return Y_pred
+    Y_pred = (recon_error <= threshold).astype(int)
+    return Y_pred[0]
 
 
 # DNN classifier
