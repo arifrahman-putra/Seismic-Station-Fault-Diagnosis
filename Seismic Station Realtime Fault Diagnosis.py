@@ -11,6 +11,7 @@ import time
 import numpy as np
 from keras.models import load_model
 import torch
+from keras.losses import MeanSquaredError
 
 # Fault classification lists
 seismo_fault_cases = ["LM", "FO", "EI", "DS", "TO", "LF"]
@@ -372,7 +373,10 @@ else:
 
 # One Class Autoencoder
 One_AE_path = "saved_models/autoencoder_model.h5"
-One_AE_model = load_model(One_AE_path )
+One_AE_model = load_model(
+    One_AE_path,
+    custom_objects={'mse': MeanSquaredError()}
+)
 
 One_AE_scaler_path = "saved_models/one_ae_scaler.pkl"
 One_AE_scaler = joblib.load(One_AE_scaler_path)
@@ -405,7 +409,7 @@ DNN_encoder = joblib.load(DNN_encoder_path)
 def predict_with_DNN(data):
     # Predict using the DNN model
     scaled_data = DNN_scaler.transform(data)
-    encoded_predictions = DNN_model.predict(scaled_data)
+    encoded_predictions = np.argmax(DNN_model.predict(scaled_data), axis=-1)
     return DNN_encoder.inverse_transform(encoded_predictions)
 
 
